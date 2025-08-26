@@ -1,5 +1,5 @@
 # customer_support.py
-from agents import Agent, RunContextWrapper, TContext, handoff, AgentHooks
+from agents import Agent, RunContextWrapper, TContext, handoff, AgentHooks, ModelSettings
 from agents.extensions.handoff_prompt import RECOMMENDED_PROMPT_PREFIX
 from pydantic import BaseModel
 from tools.my_tool import get_order_status  # <-- import your function tool
@@ -42,6 +42,7 @@ human_agent = Agent(
     model=model,
      tools=[get_order_status],  
          input_guardrails=[customer_support_input_guardrail],  # ✅ check for offensive input
+    model_settings=ModelSettings(tool_choice="auto")
 
 )
 
@@ -63,5 +64,6 @@ When escalating, always provide a short reason string in the `reason` field.
     tools=[get_order_status],  # ✅ attach the tool here
     handoffs=[human_agent],
     input_guardrails=[customer_support_input_guardrail],  # ✅ check for offensive input
-    hooks=MyAgentHooks()
-)
+    hooks=MyAgentHooks(),
+    model_settings=ModelSettings(tool_choice="auto")
+) 
