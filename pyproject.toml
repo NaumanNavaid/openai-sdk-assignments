@@ -1,0 +1,10 @@
+[project]
+name = "openai-sdk-assignment"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "openai-agents>=0.2.8",
+    "tavily-python>=0.7.11",
+]
