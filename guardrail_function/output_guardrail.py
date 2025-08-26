@@ -15,5 +15,5 @@ async def guardrail_output_function(ctx: RunContextWrapper, agent, output: str):
 
     return GuardrailFunctionOutput(
         output_info=result.final_output,
-        tripwire_triggered=result.final_output.is_answer_69
+        tripwire_triggered=result.final_output.is_answer_political
     )

@@ -3,7 +3,7 @@ from typing import Optional
 
 class MathOutPut(BaseModel):
     is_math: bool
-    is_answer_69: bool
+    is_answer_political: bool
     reason: str
     
     
