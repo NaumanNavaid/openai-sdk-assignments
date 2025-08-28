@@ -6,10 +6,10 @@ from my_config.gemini_config import run_config
 set_tracing_disabled(True)
 
 async def main():
-    print("💬 Customer Support Bot is running (type 'exit' to quit)...\n")
+    print("Customer Support Bot is running (type 'exit' to quit)...\n")
 
     current_agent = bot_agent  # Start with BotAgent
-    print(f"👉 Currently talking to: {current_agent.name}")
+    print(f"Currently talking to: {current_agent.name}")
 
     while True:
         try:
