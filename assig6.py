@@ -19,11 +19,7 @@ async def main():
                 break
 
             # ✅ Switch back to BotAgent when user says issue resolved
-            if current_agent.name == "Human Support Agent" and text_input in ["done", "thank you", "resolved"]:
-                print("✅ Issue marked resolved. You are now chatting with the Support Bot again.")
-                current_agent = bot_agent
-                continue
-
+           
             # ✅ Run the conversation starting from the current agent
             result = await Runner.run(
                 starting_agent=current_agent,
@@ -34,8 +30,6 @@ async def main():
 
             # ✅ Update agent if handoff occurred
             if hasattr(result, "_last_agent") and result._last_agent:
-                if current_agent.name != result._last_agent.name:
-                    print(f"🔁 Handoff triggered: {current_agent.name} → {result._last_agent.name}")
                 current_agent = result._last_agent
 
             print(f"\n👤 Agent Handling: {current_agent.name}")
