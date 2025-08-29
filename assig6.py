@@ -35,11 +35,10 @@ async def main():
             print(f"\n👤 Agent Handling: {current_agent.name}")
             print(f"🤖 Response: {result.final_output}\n")
 
-        except InputGuardrailTripwireTriggered as e:
-            output_info = getattr(e, "output_info", None)
-            if output_info and getattr(output_info, "sanitized_text", None):
-                print(f"👉 Suggested clean input: {output_info.sanitized_text}")
-            else:
+        except InputGuardrailTripwireTriggered:
+            
+            
+          
                 print("❌ Blocked: Your message contained offensive or disallowed input.\n")
 
         except OutputGuardrailTripwireTriggered:
