@@ -26,17 +26,17 @@ async def main():
         try:
             msg = input("Enter your question (or type 'exit' to quit): ")
             if msg.lower().strip() == "exit":
-                print("👋 Exiting...")
+                print("Exiting...")
                 break
 
             result = await Runner.run(guardrail_agent, msg, run_config=run_config)
             print(f"\n\nFinal output: {result.final_output}")
 
         except InputGuardrailTripwireTriggered:
-            print("❌ Error: invalid prompt (blocked by input guardrail).")
+            print(" Error: invalid prompt (blocked by input guardrail).")
 
         except OutputGuardrailTripwireTriggered as ex:
-            print("🚫 Error: unsafe response (blocked by output guardrail).")
+            print(" Error: unsafe response (blocked by output guardrail).")
             
 
 asyncio.run(main())

@@ -122,10 +122,10 @@ async def main():
     print("💬 Web Search Bot is running (type 'exit' to quit)...\n")
     
     if api_key_valid:
-        print(f"✅ Web search functionality is enabled!")
-        print(f"🔑 API Key: {api_key[:10]}...{api_key[-4:]}" if api_key else "No API key")
+        print(f"Web search functionality is enabled!")
+        print(f"API Key: {api_key[:10]}...{api_key[-4:]}" if api_key else "No API key")
     else:
-        print(f"⚠️  WEB SEARCH DISABLED: {api_key_message}")
+        print(f"  WEB SEARCH DISABLED: {api_key_message}")
         print("To enable web search, check your Tavily API key in the .env file\n")
     
     current_agent = web_search_agent
@@ -136,7 +136,7 @@ async def main():
         try:
             text_input = input("You: ").strip()
             if text_input.lower() in ['exit', 'quit', 'bye']:
-                print("👋 Exiting...")
+                print(" Exiting...")
                 break
             if not text_input:
                 continue
@@ -148,20 +148,16 @@ async def main():
                 context={"text_input": text_input}
             )
 
-            print(f"\n🤖 {current_agent.name}: {result.final_output}\n")
+            print(f"\n{current_agent.name}: {result.final_output}\n")
 
-        except InputGuardrailTripwireTriggered as e:
-            output_info = getattr(e, "output_info", None)
-            if output_info and getattr(output_info, "sanitized_text", None):
-                print(f"👉 Suggested clean input: {output_info.sanitized_text}")
-            else:
-                print("❌ Blocked: Your message contained offensive or disallowed input.\n")
+        except InputGuardrailTripwireTriggered:
+             print("Blocked: Your message contained offensive or disallowed input.\n")
 
         except OutputGuardrailTripwireTriggered:
-            print("🚫 Blocked: Bot tried to generate unsafe content.\n")
+            print(" Blocked: Bot tried to generate unsafe content.\n")
         
         except Exception as e:
-            print(f"❌ Error: {str(e)}\n")
+            print(f"Error: {str(e)}\n")
 
 if __name__ == "__main__":
     import asyncio

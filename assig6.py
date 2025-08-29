@@ -32,17 +32,14 @@ async def main():
             if hasattr(result, "_last_agent") and result._last_agent:
                 current_agent = result._last_agent
 
-            print(f"\n👤 Agent Handling: {current_agent.name}")
-            print(f"🤖 Response: {result.final_output}\n")
+            print(f"\n Agent Handling: {current_agent.name}")
+            print(f" Response: {result.final_output}\n")
 
         except InputGuardrailTripwireTriggered:
-            
-            
-          
-                print("❌ Blocked: Your message contained offensive or disallowed input.\n")
+            print(" Blocked: Your message contained offensive or disallowed input.\n")
 
         except OutputGuardrailTripwireTriggered:
-            print("🚫 Blocked: Bot tried to generate unsafe content.\n")
+            print(" Blocked: Bot tried to generate unsafe content.\n")
 
 
 if __name__ == "__main__":

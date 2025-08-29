@@ -12,7 +12,7 @@ if __name__ == "__main__":
     while True:
         input_text = input("Enter your query: ").strip()
         if input_text.lower() in ["exit", "quit"]:
-            print("Goodbye 👋")
+            print("Goodbye")
             break
 
         res = Runner.run_sync(
